@@ -4,13 +4,13 @@ import Nav from './Nav';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Dashboard from './Dashboard';
 import NewTransact from './Sales/NewTransact';
-import Admin from './Admin';
+import Admin from './Admin'; 
 import {  createMuiTheme,  makeStyles, createStyles, Theme as AugmentedTheme, ThemeProvider} from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
-import green from '@material-ui/core/colors/green';
-import Paper from '@material-ui/core/Paper';
+import green from '@material-ui/core/colors/green'; 
 import Grid from '@material-ui/core/Grid';
 import { Container, AppBar } from '@material-ui/core';
+import CssBaseline from "@material-ui/core/CssBaseline";
 const font = "'Google Sans', sans-serif"; 
 const theme = createMuiTheme({
   palette: {
@@ -28,6 +28,7 @@ const App = () => {
   return (
     <Router>
       <ThemeProvider theme={theme}>    
+      <CssBaseline />
       <Container fluid> 
         <Grid direction="column">
         <Nav/>
@@ -35,7 +36,7 @@ const App = () => {
         <Route path="/" exact component={Dashboard}/> 
         <Route path="/dashboard" exact component={Dashboard}/> 
         <Route path="/admin" exact component={Admin}/> 
-        <Route path="/sales/newTransact" exact component={NewTransact}/> 
+        <Route path="/sales/newTransact" exact component={NewTransact}/>  
         </Switch> 
         </Grid>  
         </Container> 
