@@ -8,6 +8,7 @@ import ProductCard from './Admin/ProductCard';
 import Button from '@material-ui/core/Button';
 import NewProductDialog from './Admin/NewProductDialog';
 import EditProductDialog from './Admin/EditProductDialog';
+requre('dotenv').config()
 import {
   Table,
   TableRow,
@@ -57,7 +58,7 @@ const Admin = () => {
   const [selectedProductaName, selectProductName] = useState('');
   const [productId, setProductId] = useState('');
   const getProducts = async() => {
-    const response = await fetch('http://localhost:3000/product/getProducts');
+    const response = await fetch(`${process.env.BASEURL}product/getProducts`);
     const data = await response.json();
     setProducts(data);
   }

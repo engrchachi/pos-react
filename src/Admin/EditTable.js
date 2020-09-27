@@ -51,7 +51,7 @@ const EditTable = ({newInfo, getNewInfo, selectedOption, productId}) => {
       headers: {'Content-Type' : 'application/json'},
       body: JSON.stringify(newData)
     }
-     await fetch(`http://localhost:3000/product/add${selectedOption}/${productId}`, options);
+     await fetch(`${process.env.BASEURL}product/add${selectedOption}/${productId}`, options);
      getNewInfo((prevState) => {
       const data = [...prevState];
       data.push(newData);
@@ -65,7 +65,7 @@ const EditTable = ({newInfo, getNewInfo, selectedOption, productId}) => {
       body: JSON.stringify(newData)
     }
     console.log(newData)
-     await fetch(`http://localhost:3000/product/update${selectedOption}`, options);
+     await fetch(`${process.env.BASEURL}product/update${selectedOption}`, options);
      getNewInfo((prevState) => {
       const data = [...prevState];
       data[data.indexOf(oldData)] = newData;

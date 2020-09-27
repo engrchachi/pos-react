@@ -11,6 +11,7 @@ import { useEffect, useState , useRef} from 'react';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import nextId from "react-id-generator"
+require('dotenv').config()
 const useStyles = makeStyles((theme) => ({
     margin: {
         margin: theme.spacing(5),
@@ -64,7 +65,7 @@ const NewTransact = ({tableData,addTableData}) => {
     }, [selectedProductName]);
 
     const getProducts = async () => {
-        const response = await fetch('http://localhost:3000/product/getProducts');
+        const response = await fetch(`${process.env.BASEURL}product/getProducts`);
         const data = await response.json(); 
         await setProducts(data);
         await console.log(data);
@@ -113,7 +114,7 @@ const NewTransact = ({tableData,addTableData}) => {
     
     const getProductInfo = async (key) => {
         console.log(key)
-        const response = await fetch('http://localhost:3000/product/getProductInfo/' + key);
+        const response = await fetch(`${process.env.BASEURL}product/getProductInfo/${key}`);
         const data = await response.json();
         console.log('fetching product info');
          

@@ -16,7 +16,7 @@ const NewProductDialog = ({dialogState, setDialogState}) => {
   const [selectedType, selectType] = useState('');
 
   const getProductClass = async() => {
-    const response = await fetch('http://localhost:3000/product/getProductClasses');
+    const response = await fetch(`${process.env.BASEURL}product/getProductClasses`);
     const data = await response.json();
     setProductType(data);
   }
@@ -33,7 +33,7 @@ const NewProductDialog = ({dialogState, setDialogState}) => {
       headers: {'Content-Type' : 'application/json'},
       body: JSON.stringify({product_name: productName, classes_id: selectedType})
     }
-    const response = await fetch('http://localhost:3000/product/addProduct', options)
+    const response = await fetch(`${process.env.BASEURL}product/addProduct`, options)
     .then(data => console.log(data));
   }
   useEffect(() => {

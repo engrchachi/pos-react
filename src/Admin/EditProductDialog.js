@@ -26,14 +26,14 @@ const EditProductDialog = ({editDialogState, setEditDialogState, productId}) => 
     setProductName] = useState('');
   const getProductInfo = async() => {
     const PRODUCT_ID = productId;
-    const response = await fetch(`http://localhost:3000/product/getProduct/${PRODUCT_ID}`);
+    const response = await fetch(`${process.env.BASEURL}product/getProduct/${PRODUCT_ID}`);
     const data = await response.json();
     setProductInfo(data[0]);
     setProductName(data[0].name);
   }
   const getProductData = async(QUERY_TYPE) => {
     const PRODUCT_ID = productId;
-    const response = await fetch(`http://localhost:3000/product/getProduct${QUERY_TYPE}s/${PRODUCT_ID}`)
+    const response = await fetch(`${process.env.BASEURL}product/getProduct${QUERY_TYPE}s/${PRODUCT_ID}`)
     return await response.json();
   }
   const [newInfo,
